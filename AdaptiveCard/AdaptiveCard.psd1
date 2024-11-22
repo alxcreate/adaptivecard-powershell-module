@@ -4,7 +4,7 @@
     RootModule = 'AdaptiveCard.psm1'
 
     # Version number of this module.
-    ModuleVersion = '1.0.0'
+    ModuleVersion = '1.0.1'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -94,10 +94,10 @@
             Tags = @('adaptivecard', 'card', 'message')
 
             # A URL to the license for this module.
-            LicenseUri = 'https://github.com/alxcreate/AdaptiveCard/blob/master/LICENSE'
+            LicenseUri = 'https://github.com/alxcreate/adaptivecard-powershell-module/blob/master/LICENSE'
 
             # A URL to the main website for this project.
-            ProjectUri = 'https://github.com/alxcreate/AdaptiveCard'
+            ProjectUri = 'https://github.com/alxcreate/adaptivecard-powershell-module'
 
             # A URL to an icon representing this module.
             # IconUri = ''
