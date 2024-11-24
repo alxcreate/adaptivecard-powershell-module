@@ -4,6 +4,8 @@
 
 AdaptiveCard is a PowerShell module that enables creation and sending of Adaptive Cards - a card-based UI framework that works across multiple platforms including Microsoft Teams.
 
+Module using Adaptive Cards schema version 1.5. Be sure what your target platform supports any [features you are using](https://github.com/Microsoft/AdaptiveCards/?tab=readme-ov-file#supported-features).
+
 ## Installation
 
 The module is available through the [PowerShell Gallery](https://powershellgallery.com/packages/AdaptiveCard/).
@@ -29,9 +31,7 @@ Start by creating a new Adaptive Card object:
 $AdaptiveCard = New-AdaptiveCard
 ```
 
-### Adding Text Blocks
-
-#### Simple Text Block
+### Adding Text Block
 
 ```powershell
 Add-AdaptiveCardTextBlock -AdaptiveCard $AdaptiveCard -Text "Hello World!"
@@ -52,36 +52,32 @@ Add-AdaptiveCardTextBlock -AdaptiveCard $AdaptiveCard `
 
 ![Example Add-AdaptiveCardTextBlock with styling](img/img02.png)
 
-##### Text Block Parameters
+#### Text Block Parameters
 
-| Parameter | Description | Default | Available Values |
-|-----------|-------------|---------|------------------|
-| `-Spacing` | Space between elements | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` |
-| `-Weight` | Text weight | `default` | `default`, `lighter`, `bolder` |
-| `-Size` | Text size | `default` | `default`, `small`, `medium`, `large`, `extraLarge` |
-| `-Color` | Text color | `default` | `default`, `dark`, `light`, `accent`, `good`, `warning`, `attention` |
+| Parameter       | Description            | Default   | Available Values                                                       | Required |
+| --------------- | ---------------------- | --------- | ---------------------------------------------------------------------- | -------- |
+| `-AdaptiveCard` | Adaptive Card object   | -         | AdaptiveCard object                                                    | Yes      |
+| `-Weight`       | Text weight            | `default` | `default`, `lighter`, `bolder`                                         |          |
+| `-Size`         | Text size              | `default` | `default`, `small`, `medium`, `large`, `extraLarge`                    |          |
+| `-Color`        | Text color             | `default` | `default`, `dark`, `light`, `accent`, `good`, `warning`, `attention`   |          |
+| `-Spacing`      | Space before the block | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` |          |
 
-### Rich Text Blocks
+### Adding Rich Text Block
 
 Rich text blocks allow combining multiple text elements with different styles. Maximum of 5 text elements can be combined:
 
 ```powershell
 Add-AdaptiveCardRichTextBlock -AdaptiveCard $AdaptiveCard `
-    -Text1 "Text one" -Text2 "`nText two" -Text3 "Text three" `
-    -Text4 " Text four" -Text5 "`nText five"
+    -Text1 "Text one" `
+    -Text2 "`nText two" `
+    -Text3 "Text three" `
+    -Text4 " Text four" `
+    -Text5 "`nText five"
 ```
 
 ![Example Add-AdaptiveCardRichTextBlock](img/img03.png)
 
-Additional parameters:
-
-`-Spacing` - The amount of space between this element and the previous element. Default is `default`. Available values are `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding`.
-
-`-Weight1`/`-Weight2` - The weight of the Text1. Default is `default`. Available values are `default`, `lighter`, `bolder`.
-
-`-Size1`/`-Size2` - The size of the Text1. Default is `default`. Available values are `default`, `small`, `medium`, `large`, `extraLarge`.
-
-`-Color1`/`-Color2` - The color of the Text1. Default is `default`. Available values are `default`, `dark`, `light`, `accent`, `good`, `warning`, `attention`.
+#### Customized Rich Text Block
 
 ```powershell
 Add-AdaptiveCardRichTextBlock -AdaptiveCard $AdaptiveCard -Spacing "default" `
@@ -110,13 +106,91 @@ Dark theme result:
 
 Each text segment (Text1 through Text5) can have its own style parameters:
 
-| Parameter | Description | Default | Available Values |
-|-----------|-------------|---------|------------------|
-| `-TextN` | Text content for segment N | - | Any string |
-| `-WeightN` | Text weight for segment N | `default` | `default`, `lighter`, `bolder` |
-| `-SizeN` | Text size for segment N | `default` | `default`, `small`, `medium`, `large`, `extraLarge` |
-| `-ColorN` | Text color for segment N | `default` | `default`, `dark`, `light`, `accent`, `good`, `warning`, `attention` |
-| `-Spacing` | Space before the block | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` |
+| Parameter       | Description                | Default   | Available Values                                                       | Required |
+| --------------- | -------------------------- | --------- | ---------------------------------------------------------------------- | -------- |
+| `-AdaptiveCard` | Adaptive Card object       | -         | AdaptiveCard object                                                    | Yes      |
+| `-TextN`        | Text content for segment N | -         | Any string                                                             | Yes      |
+| `-WeightN`      | Text weight for segment N  | `default` | `default`, `lighter`, `bolder`                                         | No       |
+| `-SizeN`        | Text size for segment N    | `default` | `default`, `small`, `medium`, `large`, `extraLarge`                    | No       |
+| `-ColorN`       | Text color for segment N   | `default` | `default`, `dark`, `light`, `accent`, `good`, `warning`, `attention`   | No       |
+| `-Spacing`      | Space before the block     | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       |
+
+### Adding Images
+
+```powershell
+Add-AdaptiveCardImage -AdaptiveCard $AdaptiveCard -Url "https://via.placeholder.com/150" -AltText "Placeholder image"
+```
+
+![Example Add-AdaptiveCardImage](img/img06.png)
+
+#### Customized Image
+
+```powershell
+Add-AdaptiveCardImage -AdaptiveCard $AdaptiveCard `
+    -Url "https://via.placeholder.com/150" `
+    -AltText "Placeholder image" `
+    -Size "medium" `
+    -HAlign "center" `
+    -Style "person" `
+```
+
+![Example Add-AdaptiveCardImage with styling](img/img07.png)
+
+#### Image Parameters
+
+| Parameter       | Description            | Default   | Available Values                                                       | Required |
+| --------------- | ---------------------- | --------- | ---------------------------------------------------------------------- | -------- |
+| `-AdaptiveCard` | Adaptive Card object   | -         | AdaptiveCard object                                                    | Yes      |
+| `-Url`          | Image URL              | -         | Any valid URL                                                          | Yes      |
+| `-AltText`      | Alt text for the image | -         | Any string                                                             | No       |
+| `-Size`         | Image size             | `auto`    | `auto`, `stretch`, `small`, `medium`, `large`                          | No       |
+| `-Width`        | Image width px         | -         | Number of pixels                                                       | No       |
+| `-Height`       | Image height           | -         | Number of pixels                                                       | No       |
+| `-HAlign`       | Horizontal alignment   | `left`    | `left`, `center`, `right`                                              | No       |
+| `-Style`        | Image style            | `default` | `default`, `person`                                                    | No       |
+| `-Spacing`      | Space before the block | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       |
+
+Size examples:
+
+- small
+- medium
+- large
+- stretch
+
+![Example Add-AdaptiveCardImage sizes](img/img08.png)
+
+### Adding Media
+
+```powershell
+Add-AdaptiveCardMedia -AdaptiveCard $AdaptiveCard -Url "https://www.youtube.com/watch?v=jNQXAC9IVRw" -AltText "Me at the zoo"
+```
+
+![Example Add-AdaptiveCardMedia](img/img09.png)
+
+#### Customized Media
+
+Displays a media player for audio or video content.
+
+```powershell
+Add-AdaptiveCardMedia -AdaptiveCard $AdaptiveCard `
+    -Url "https://www.youtube.com/watch?v=jNQXAC9IVRw" `
+    -AltText "Me at the zoo" `
+    -Poster "https://img.youtube.com/vi/jNQXAC9IVRw/default.jpg" `
+    -Height "Stretch"
+```
+
+![Example Add-AdaptiveCardMedia with styling](img/img10.png)
+
+#### Media Parameters
+
+| Parameter       | Description            | Default     | Available Values                                                       | Required |
+| --------------- | ---------------------- | ----------- | ---------------------------------------------------------------------- | -------- |
+| `-AdaptiveCard` | Adaptive Card object   | -           | AdaptiveCard object                                                    | Yes      |
+| `-Url`          | Media URL              | -           | Any valid URL                                                          | Yes      |
+| `-Poster`       | Poster image URL       | -           | Any valid URL                                                          | No       |
+| `-AltText`      | Alt text for the media | -           | Any string                                                             | No       |
+| `-Height`       | Media height           | `automatic` | `automatic`, `stretch`                                                 | No       |
+| `-Spacing`      | Space before the block | `default`   | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       |
 
 ### Sending to Microsoft Teams
 

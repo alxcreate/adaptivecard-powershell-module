@@ -9,6 +9,7 @@ function Add-AdaptiveCardTextBlock {
         [string]$Color = "default", # default, dark, light, accent, good, warning, attention
         [string]$Spacing = "default" # default, none, small, medium, large, extraLarge, padding
     )
+
     $AdaptiveCard.attachments[0].content.body += @{
         type    = "TextBlock"
         text    = "$($Text)"

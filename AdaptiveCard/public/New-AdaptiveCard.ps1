@@ -7,7 +7,7 @@ function New-AdaptiveCard {
                 content     = @{
                     type      = "AdaptiveCard"
                     '$schema' = "https://adaptivecards.io/schemas/adaptive-card.json"
-                    version   = "1.4"
+                    version   = "1.5"
                     msteams   = @{
                         width = "Full"
                     }

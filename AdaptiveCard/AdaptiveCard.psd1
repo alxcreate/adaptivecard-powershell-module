@@ -4,7 +4,7 @@
     RootModule = 'AdaptiveCard.psm1'
 
     # Version number of this module.
-    ModuleVersion = '1.0.1'
+    ModuleVersion = '1.1.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -65,6 +65,8 @@
         'New-AdaptiveCard',
         'Add-AdaptiveCardTextBlock',
         'Add-AdaptiveCardRichTextBlock',
+        'Add-AdaptiveCardImage',
+        'Add-AdaptiveCardMedia',
         'Send-AdaptiveCardToTeams'
     )
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -91,7 +93,7 @@
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags = @('adaptivecard', 'card', 'message')
+            Tags = @('Teams', 'MSTeams', 'AdaptiveCards', 'AdaptiveCard', 'Workflow', 'card', 'JSON', 'message')
 
             # A URL to the license for this module.
             LicenseUri = 'https://github.com/alxcreate/adaptivecard-powershell-module/blob/master/LICENSE'
@@ -103,7 +105,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = 'Initial release'
+            ReleaseNotes = 'Added Add-AdaptiveCardImage and Add-AdaptiveCardMedia functions for adding images and media to Adaptive Cards'
 
         } # End of PSData hashtable
 
