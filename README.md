@@ -1,5 +1,9 @@
 # AdaptiveCard PowerShell Module
 
+![alt text](img/repository-open-graph.png)
+
+**Official Adaptive Cards repository:** [github.com/microsoft/AdaptiveCards](https://github.com/microsoft/AdaptiveCards)
+
 ## Overview
 
 AdaptiveCard is a PowerShell module that enables creation and sending of Adaptive Cards - a card-based UI framework that works across multiple platforms including Microsoft Teams.
@@ -57,10 +61,11 @@ Add-AdaptiveCardTextBlock -AdaptiveCard $AdaptiveCard `
 | Parameter       | Description            | Default   | Available Values                                                       | Required |
 | --------------- | ---------------------- | --------- | ---------------------------------------------------------------------- | -------- |
 | `-AdaptiveCard` | Adaptive Card object   | -         | AdaptiveCard object                                                    | Yes      |
-| `-Weight`       | Text weight            | `default` | `default`, `lighter`, `bolder`                                         |          |
-| `-Size`         | Text size              | `default` | `default`, `small`, `medium`, `large`, `extraLarge`                    |          |
-| `-Color`        | Text color             | `default` | `default`, `dark`, `light`, `accent`, `good`, `warning`, `attention`   |          |
-| `-Spacing`      | Space before the block | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` |          |
+| `-Text`         | Text content           | -         | Any string                                                             | Yes      |
+| `-Weight`       | Text weight            | `default` | `default`, `lighter`, `bolder`                                         | No       |
+| `-Size`         | Text size              | `default` | `default`, `small`, `medium`, `large`, `extraLarge`                    | No       |
+| `-Color`        | Text color             | `default` | `default`, `dark`, `light`, `accent`, `good`, `warning`, `attention`   | No       |
+| `-Spacing`      | Space before the block | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       |
 
 ### Adding Rich Text Block
 
