@@ -37,88 +37,92 @@ $AdaptiveCard = New-AdaptiveCard
 
 ### Adding Text Block
 
-```powershell
-Add-AdaptiveCardTextBlock -AdaptiveCard $AdaptiveCard -Text "Hello World!"
-```
-
-![Example Add-AdaptiveCardTextBlock](img/img01.png)
-
-#### Customized Text Block
+Add a text block to the card. TextBlock supports markdown formatting:
 
 ```powershell
 Add-AdaptiveCardTextBlock -AdaptiveCard $AdaptiveCard `
-    -Text "Hello World!" `
-    -Weight "bolder" `
-    -Size "large" `
-    -Color "accent" `
-    -Spacing "small"
+   -Text "**IMPORTANT NOTICE**" `
+   -Size extraLarge `
+   -Weight bolder `
+   -Color attention `
+   -HAlign center `
+   -Spacing large
+
+Add-AdaptiveCardTextBlock -AdaptiveCard $AdaptiveCard `
+   -Text "System Update Details:" `
+   -Size medium `
+   -Weight bolder `
+   -Spacing medium
+
+Add-AdaptiveCardTextBlock -AdaptiveCard $AdaptiveCard `
+   -Text "Scheduled maintenance will be performed *tomorrow from 2:00 AM to 4:00 AM*. During the update, brief interruptions may occur in the following services:
+- Corporate Email
+- Document Management System
+- Internal Portal" `
+   -Wrap `
+   -Size default `
+   -Color default `
+   -Spacing small
+
+Add-AdaptiveCardTextBlock -AdaptiveCard $AdaptiveCard `
+   -Text "
+Important: Save all documents before maintenance `n
+Support contact: support@company.com
+" `
+   -FontType monospace `
+   -Size small `
+   -Color accent `
+   -IsSubtle
+
+Add-AdaptiveCardTextBlock -AdaptiveCard $AdaptiveCard `
+   -Text "_Information Technology Department_" `
+   -Size small `
+   -HAlign right `
+   -IsSubtle `
+   -Spacing medium
 ```
 
-![Example Add-AdaptiveCardTextBlock with styling](img/img02.png)
+![Example Add-AdaptiveCardTextBlock](img/img02.png)
 
-#### Text Block Parameters
-
-| Parameter       | Description            | Default   | Available Values                                                       | Required |
-| --------------- | ---------------------- | --------- | ---------------------------------------------------------------------- | -------- |
-| `-AdaptiveCard` | Adaptive Card object   | -         | AdaptiveCard object                                                    | Yes      |
-| `-Text`         | Text content           | -         | Any string                                                             | Yes      |
-| `-Weight`       | Text weight            | `default` | `default`, `lighter`, `bolder`                                         | No       |
-| `-Size`         | Text size              | `default` | `default`, `small`, `medium`, `large`, `extraLarge`                    | No       |
-| `-Color`        | Text color             | `default` | `default`, `dark`, `light`, `accent`, `good`, `warning`, `attention`   | No       |
-| `-Spacing`      | Space before the block | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       |
+More examples can be found in the [Text Block documentation](Examples_Add-AdaptiveCardTextBlock.md).
 
 ### Adding Rich Text Block
 
-Rich text blocks allow combining multiple text elements with different styles. Maximum of 5 text elements can be combined:
+Rich text blocks allow combining multiple text elements with different styles. Maximum of 9 text elements can be combined. RichTextBlock not support markdown formatting.
 
 ```powershell
+# Example 1 - Formatted System Notification
 Add-AdaptiveCardRichTextBlock -AdaptiveCard $AdaptiveCard `
-    -Text1 "Text one" `
-    -Text2 "`nText two" `
-    -Text3 "Text three" `
-    -Text4 " Text four" `
-    -Text5 "`nText five"
+   -Text1 "IMPORTANT: `n" -Weight1 "bolder" -Size1 "large" -Color1 "attention" `
+   -Text2 "System Update " -Weight2 "bolder" `
+   -Text3 "scheduled for " `
+   -Text4 "3:00 PM" -FontType4 "monospace" -Color4 "accent" `
+   -Text5 ". `nPlease " `
+   -Text6 "save" -Italic6 -Underline6 `
+   -Text7 " all your work. `n" `
+   -Text8 "Details" -Color8 "accent" -Url8 "https://example.com" `
+   -Text9 " (opens in new window)" -Size9 "small" -IsSubtle9
 ```
 
 ![Example Add-AdaptiveCardRichTextBlock](img/img03.png)
 
-#### Customized Rich Text Block
-
 ```powershell
-Add-AdaptiveCardRichTextBlock -AdaptiveCard $AdaptiveCard -Spacing "default" `
-    -Text1 "Bolder large attention. " -Weight1 "bolder" -Size1 "large" -Color1 "accent" `
-    -Text2 "Lighter medium accent." -Weight2 "lighter" -Size2 "medium" -Color2 "attention"
-
-Add-AdaptiveCardRichTextBlock -AdaptiveCard $AdaptiveCard -Spacing "None" `
-    -Text1 "No Spacing Bolder extraLarge warning. " -Weight1 "bolder" -Size1 "large" -Color1 "warning" `
-    -Text2 "Default small good." -Weight2 "default" -Size2 "small" -Color2 "good"
-
-Add-AdaptiveCardRichTextBlock -AdaptiveCard $AdaptiveCard -Spacing "padding" `
-    -Text1 "Padding bolder large light. " -Weight1 "bolder" -Size1 "large" -Color1 "light" `
-    -Text2 "Lighter extraLarge dark" -Weight2 "lighter" -Size2 "extraLarge" -Color2 "dark" `
-    -Text3 "Bolder medium default" -Weight3 "bolder" -Size3 "medium" -Color3 "default" `
-    -Text4 "Lighter small accent" -Weight4 "lighter" -Size4 "small" -Color4 "accent" `
-    -Text5 "Bolder large good" -Weight5 "bolder" -Size5 "large" -Color5 "good"
+# Example 2 - Task Status Overview
+Add-AdaptiveCardRichTextBlock -AdaptiveCard $AdaptiveCard `
+   -Text1 "[DONE] " -Color1 "good" -Weight1 "bolder" `
+   -Text2 "Data Analysis `n" -Strikethrough2 -IsSubtle2 `
+   -Text3 "[IN PROGRESS] " -Color3 "warning" -Weight3 "bolder" `
+   -Text4 "Testing " -Highlight4 `
+   -Text5 "(3/10) `n" -FontType5 "monospace" -Size5 "small" `
+   -Text6 "[BLOCKED] " -Color6 "attention" -Weight6 "bolder" `
+   -Text7 "Deployment `n" `
+   -Text8 "Error: " -Size8 "small" -Color8 "attention" `
+   -Text9 "DB-256" -FontType9 "monospace" -Url9 "https://issues/DB-256"
 ```
 
-Light theme result:
-![Example Add-AdaptiveCardRichTextBlock Light theme](img/img04.png)
+![Example Add-AdaptiveCardRichTextBlock 2](img/img04.png)
 
-Dark theme result:
-![Example Add-AdaptiveCardRichTextBlock Dark theme](img/img05.png)
-
-#### Rich Text Block Parameters
-
-Each text segment (Text1 through Text5) can have its own style parameters:
-
-| Parameter       | Description                | Default   | Available Values                                                       | Required |
-| --------------- | -------------------------- | --------- | ---------------------------------------------------------------------- | -------- |
-| `-AdaptiveCard` | Adaptive Card object       | -         | AdaptiveCard object                                                    | Yes      |
-| `-TextN`        | Text content for segment N | -         | Any string                                                             | Yes      |
-| `-WeightN`      | Text weight for segment N  | `default` | `default`, `lighter`, `bolder`                                         | No       |
-| `-SizeN`        | Text size for segment N    | `default` | `default`, `small`, `medium`, `large`, `extraLarge`                    | No       |
-| `-ColorN`       | Text color for segment N   | `default` | `default`, `dark`, `light`, `accent`, `good`, `warning`, `attention`   | No       |
-| `-Spacing`      | Space before the block     | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       |
+More examples can be found in the [Rich Text Block documentation](Examples_Add-AdaptiveCardRichTextBlock.md).
 
 ### Adding Images
 
@@ -126,53 +130,11 @@ Each text segment (Text1 through Text5) can have its own style parameters:
 Add-AdaptiveCardImage -AdaptiveCard $AdaptiveCard -Url "https://via.placeholder.com/150" -AltText "Placeholder image"
 ```
 
-![Example Add-AdaptiveCardImage](img/img06.png)
+![Example Add-AdaptiveCardImage](img/img05.png)
 
-#### Customized Image
-
-```powershell
-Add-AdaptiveCardImage -AdaptiveCard $AdaptiveCard `
-    -Url "https://via.placeholder.com/150" `
-    -AltText "Placeholder image" `
-    -Size "medium" `
-    -HAlign "center" `
-    -Style "person" `
-```
-
-![Example Add-AdaptiveCardImage with styling](img/img07.png)
-
-#### Image Parameters
-
-| Parameter       | Description            | Default   | Available Values                                                       | Required |
-| --------------- | ---------------------- | --------- | ---------------------------------------------------------------------- | -------- |
-| `-AdaptiveCard` | Adaptive Card object   | -         | AdaptiveCard object                                                    | Yes      |
-| `-Url`          | Image URL              | -         | Any valid URL                                                          | Yes      |
-| `-AltText`      | Alt text for the image | -         | Any string                                                             | No       |
-| `-Size`         | Image size             | `auto`    | `auto`, `stretch`, `small`, `medium`, `large`                          | No       |
-| `-Width`        | Image width px         | -         | Number of pixels                                                       | No       |
-| `-Height`       | Image height           | -         | Number of pixels                                                       | No       |
-| `-HAlign`       | Horizontal alignment   | `left`    | `left`, `center`, `right`                                              | No       |
-| `-Style`        | Image style            | `default` | `default`, `person`                                                    | No       |
-| `-Spacing`      | Space before the block | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       |
-
-Size examples:
-
-- small
-- medium
-- large
-- stretch
-
-![Example Add-AdaptiveCardImage sizes](img/img08.png)
+More examples can be found in the [Image documentation](Examples_Add-AdaptiveCardImage.md).
 
 ### Adding Media
-
-```powershell
-Add-AdaptiveCardMedia -AdaptiveCard $AdaptiveCard -Url "https://www.youtube.com/watch?v=jNQXAC9IVRw" -AltText "Me at the zoo"
-```
-
-![Example Add-AdaptiveCardMedia](img/img09.png)
-
-#### Customized Media
 
 Displays a media player for audio or video content.
 
@@ -184,18 +146,9 @@ Add-AdaptiveCardMedia -AdaptiveCard $AdaptiveCard `
     -Height "Stretch"
 ```
 
-![Example Add-AdaptiveCardMedia with styling](img/img10.png)
+![Example Add-AdaptiveCardMedia with styling](img/img06.png)
 
-#### Media Parameters
-
-| Parameter       | Description            | Default     | Available Values                                                       | Required |
-| --------------- | ---------------------- | ----------- | ---------------------------------------------------------------------- | -------- |
-| `-AdaptiveCard` | Adaptive Card object   | -           | AdaptiveCard object                                                    | Yes      |
-| `-Url`          | Media URL              | -           | Any valid URL                                                          | Yes      |
-| `-Poster`       | Poster image URL       | -           | Any valid URL                                                          | No       |
-| `-AltText`      | Alt text for the media | -           | Any string                                                             | No       |
-| `-Height`       | Media height           | `automatic` | `automatic`, `stretch`                                                 | No       |
-| `-Spacing`      | Space before the block | `default`   | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       |
+More examples can be found in the [Media documentation](Examples_Add-AdaptiveCardMedia.md).
 
 ### Sending to Microsoft Teams
 
@@ -207,7 +160,3 @@ $WorkflowUrl = "https://prod-11.westeurope.logic.azure.com:443/workflows/..."
 
 Send-AdaptiveCardToTeams -AdaptiveCard $AdaptiveCard -Workflow $WorkflowUrl
 ```
-
-## Theme Support
-
-The module supports both light and dark themes in Microsoft Teams. Colors will automatically adjust based on the user's theme settings, as shown in the examples above.

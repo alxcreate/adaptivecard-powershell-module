@@ -4,7 +4,7 @@
     RootModule = 'AdaptiveCard.psm1'
 
     # Version number of this module.
-    ModuleVersion = '1.1.0'
+    ModuleVersion = '1.2.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -102,10 +102,10 @@
             ProjectUri = 'https://github.com/alxcreate/adaptivecard-powershell-module'
 
             # A URL to an icon representing this module.
-            # IconUri = ''
+            IconUri = 'https://github.com/alxcreate/adaptivecard-powershell-module/blob/main/img/icon-adaptivecards.png'
 
             # ReleaseNotes of this module
-            ReleaseNotes = 'Added Add-AdaptiveCardImage and Add-AdaptiveCardMedia functions for adding images and media to Adaptive Cards'
+            ReleaseNotes = 'Validate parameters for all functions. Parameters for `Add-AdaptiveCardRichTextBlock`: `SelectAction`, `Url`, `FontType`, `Highlight`, `IsSubtle`, `Italic`, `Strikethrough`, `Underline`. Parameters for `Add-AdaptiveCardTextBlock`: `FontType`, `HAlign`, `IsSubtle`, `MaxLines`, `Wrap`.'
 
         } # End of PSData hashtable
 
