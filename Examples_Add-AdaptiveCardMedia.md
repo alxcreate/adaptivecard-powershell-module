@@ -4,14 +4,14 @@ Function `Add-AdaptiveCardMedia` adds a media player to an Adaptive Card.
 
 ## Media Parameters
 
-| Parameter       | Default     | Available Values                                                       | Required | Description            |
-| --------------- | ----------- | ---------------------------------------------------------------------- | -------- | ---------------------- |
-| `-AdaptiveCard` | -           | AdaptiveCard object                                                    | Yes      | Adaptive Card object   |
-| `-Url`          | -           | Any valid URL                                                          | Yes      | Media URL              |
-| `-Poster`       | -           | Any valid URL                                                          | No       | Poster image URL       |
-| `-AltText`      | -           | Any string                                                             | No       | Alt text for the media |
-| `-Height`       | `automatic` | `automatic`, `stretch`                                                 | No       | Media height           |
-| `-Spacing`      | `default`   | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       | Space before the block |
+| Parameter       | Default   | Available Values                                                       | Required | Description            |
+| --------------- | --------- | ---------------------------------------------------------------------- | -------- | ---------------------- |
+| `-AdaptiveCard` | -         | AdaptiveCard object                                                    | Yes      | Adaptive Card object   |
+| `-Url`          | -         | Any valid URL                                                          | Yes      | Media URL              |
+| `-Poster`       | -         | Any valid URL                                                          | No       | Poster image URL       |
+| `-AltText`      | -         | Any string                                                             | No       | Alt text for the media |
+| `-Height`       | `auto`    | `auto`, `stretch`                                                      | No       | Media height           |
+| `-Spacing`      | `default` | `default`, `none`, `small`, `medium`, `large`, `extraLarge`, `padding` | No       | Space before the block |
 
 ## Examples
 
