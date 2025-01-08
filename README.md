@@ -1,5 +1,8 @@
 # AdaptiveCard PowerShell Module
 
+[![PSGallery Version](https://img.shields.io/powershellgallery/v/AdaptiveCard.svg?style=flat&logo=powershell&label=PSGallery%20Version)](https://www.powershellgallery.com/packages/AdaptiveCard)
+[![PSGallery Downloads](https://img.shields.io/powershellgallery/dt/AdaptiveCard.svg?style=flat&logo=powershell&label=PSGallery%20Downloads)](https://www.powershellgallery.com/packages/AdaptiveCard)
+
 ![alt text](img/repository-open-graph.png)
 
 **Official Adaptive Cards repository:** [github.com/microsoft/AdaptiveCards](https://github.com/microsoft/AdaptiveCards)
@@ -149,6 +152,22 @@ Add-AdaptiveCardMedia -AdaptiveCard $AdaptiveCard `
 ![Example Add-AdaptiveCardMedia with styling](img/img06.png)
 
 More examples can be found in the [Media documentation](Examples_Add-AdaptiveCardMedia.md).
+
+### Adding Fact Set
+
+Fact sets are used to display a series of facts (name/value pairs) in a tabular format.
+
+```powershell
+Add-AdaptiveCardFactSet -AdaptiveCard $AdaptiveCard `
+   -Fact1 "Status" -Value1 "In Progress" `
+   -Fact2 "Priority" -Value2 "High" `
+   -Fact3 "Assigned to" -Value3 "John Doe" `
+   -Fact4 "Due date" -Value4 "2021-12-31"
+```
+
+![Example Add-AdaptiveCardFactSet](img/example-factset01.png)
+
+More examples can be found in the [Fact Set documentation](Examples_Add-AdaptiveCardFactSet.md).
 
 ### Sending to Microsoft Teams
 
