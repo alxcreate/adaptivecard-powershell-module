@@ -4,7 +4,7 @@ Function `Add-AdaptiveCardRichTextBlock` adds a RichTextBlock element to an Adap
 
 ## Rich Text Block Parameters
 
-Each text segment (Text1 through Text5) can have its own style parameters:
+You can add up to 9 text segments. Each text segment (Text1 through Text9) can have its own style parameters:
 
 | Parameter         | Default   | Available Values                                                       | Required | Description                  |
 | ----------------- | --------- | ---------------------------------------------------------------------- | -------- | ---------------------------- |

@@ -29,7 +29,7 @@
 
 .PARAMETER Height
     Optional. Controls how the media element's height should behave.
-    Valid values: "automatic", "stretch"
+    Valid values: "auto", "stretch"
     Default: Not set, media will use default height behavior
 
 .PARAMETER Spacing
@@ -53,7 +53,7 @@
     $card = Get-AdaptiveCard
     Add-AdaptiveCardMedia -AdaptiveCard $card -Url "https://example.com/video.mp4" `
                          -Poster "https://storageaccount.blob.core.windows.net/container/thumbnail.jpg" `
-                         -Height "automatic"
+                         -Height "auto"
 
     Adds a video with a poster image stored in Azure Blob Storage and automatic height adjustment.
 
@@ -72,7 +72,7 @@ function Add-AdaptiveCardMedia {
         [string]$Url,
         [string]$Poster,
         [string]$AltText,
-        [ValidateSet("automatic", "stretch")]
+        [ValidateSet("auto", "stretch")]
         [string]$Height,
         [ValidateSet("default", "none", "small", "medium", "large", "extraLarge", "padding")]
         [string]$Spacing
