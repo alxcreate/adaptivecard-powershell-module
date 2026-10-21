@@ -6,6 +6,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.1] - 2026-10-21
+
+### Fixed
+
+- Typo in file names `Add-AdaptoveCardImage.ps1` and `Add-AdaptoveCardMedia.ps1`, which prevented `Add-AdaptiveCardImage` and `Add-AdaptiveCardMedia` from being exported.
+
+## [1.3.0] - 2025-01-08
+
+### Added
+
+- `Add-AdaptiveCardFactSet` function.
+
 ## [1.2.0] - 2024-11-27
 
 ### Added
